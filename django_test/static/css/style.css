@@ -1,0 +1,132 @@
+body {
+    margin: auto 0;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor:pointer;
+}
+
+.zone {
+    color:#FFF;
+    font-size:2em;
+    transition: all 0.3s linear;
+}
+
+.zone:hover {
+    -webkit-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+    -moz-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+    -o-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+    box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+}
+
+/* NAV */
+.sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.main-navigation {
+    display: flex;
+    list-style: none;
+    font-size: 0.7em;
+    margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .main-navigation {
+        font-size: 0.5em;
+        padding: 0;
+    }
+}
+
+._push {
+    margin-left: auto;
+}
+
+li {
+    padding: 20px;
+}
+
+.hero a:hover {
+    color: #02aab0;
+}
+
+/* COVER */
+.mycontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+/* GRID */
+.grid-wrapper {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+/* FOOOTER */
+footer {
+    text-align: center;
+    color: black;
+    font-size:2em;
+}
+
+.content {
+    background-color: #02aab0;
+    color: #fff;
+    border-top: 0px;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    padding-bottom: 10%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 0px;
+    font-weight: 400;
+    padding: 0rem 5.6rem;
+    margin-bottom: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    flex-direction: column;
+    align-content: center;
+    flex-flow: wrap;
+}
+
+/***********************************************************************
+ *  White Background
+ **********************************************************************/
+.white {  
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 0px;
+    background: #fff;
+    font-weight: 400;
+    color: #272341;
+    padding: 0rem 5.6rem;
+    margin-bottom: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    flex-direction: column;
+    align-content: center;
+    flex-flow: wrap;
+}
+
+/***********************************************************************
+ *  Hero Background
+ **********************************************************************/
+.hero {
+    background: #02aab0;
+}
+
+.signature {
+    
+}

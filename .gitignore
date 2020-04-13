@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Django specific ignores
+*.pyc
+*~
+myvenv
+db.sqlite3
+/static
+.DS_Store

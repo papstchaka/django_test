@@ -1,0 +1,28 @@
+.dropdown {
+    width: 100%;
+}
+
+.dropdown-menu.show {
+    position: initial !important;
+    padding: 0px;
+}
+
+.dropdown-toggle {
+    color: #02aab0 !important;
+    border: 2px solid #02aab0;
+}
+.dropdown-toggle:hover {
+    color: #fff !important;
+    background-color: #02aab0 !important;
+    text-decoration: none;
+}
+
+.dropdown-toggle-item {
+    color: #02aab0 !important;
+    border: 2px solid #02aab0;
+}
+.dropdown-toggle-item:hover {
+    color: #fff !important;
+    background-color: #02aab0 !important;
+    text-decoration: none;
+}

@@ -1,0 +1,74 @@
+/* Call to Action Button */
+.cta-btn {
+    display: inline-block;
+    position: relative;
+    padding: 0.8rem 1.6rem;
+    font-weight: bold;
+    line-height: 1;
+    z-index: 1;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.6s;
+    cursor: pointer;
+}
+.cta-btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0px;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
+}
+/* Hero Style */
+.cta-btn--hero {
+    border: 2px solid transparent;
+    border-image: linear-gradient(135deg, #fff 0%, #00cdac 100%);
+    border-image-slice: 1;
+}
+.cta-btn--hero::after {
+    background-image: linear-gradient(135deg, #fff 0%, #00cdac 100%);
+}
+.cta-btn--hero:hover {
+    -webkit-text-fill-color: #fff;
+    text-decoration: none;
+}
+.cta-btn--hero:hover::after {
+    width: 100%;
+}
+/* Resume Style */
+.cta-btn--resume {
+    color: #fff !important;
+    border: 2px solid #fff;
+}
+.cta-btn--resume::after {
+    background: #fff !important;
+}
+.cta-btn--resume:hover {
+    color: #00cdac !important;
+    text-decoration: none;
+}
+.cta-btn--resume:hover::after {
+    width: 100%;
+}
+
+/* Resume Style active*/
+.cta-btn--resume-active {
+    background: white;
+    color: #00cdac !important;
+    border: 2px solid #fff;
+}
+.cta-btn--resume-active::after {
+    background: #00cdac !important;
+}
+.cta-btn--resume-active:hover {
+    color: #fff !important;
+    text-decoration: none;
+}
+.cta-btn--resume-active:hover::after {
+    width: 100%;
+}
+/* Arrow Button */
+.up i {
+    color: #272727;
+}

@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    <title>Graph</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/button.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">  
+  
+  </head>
+  <body>
+    <nav class="zone hero sticky">
+        <ul class="main-navigation">
+          <li><a href="/home" class="cta-btn cta-btn--resume-active">Startseite</a></li>
+          <li><a href='/subsite' class="cta-btn cta-btn--resume">Unterseite</a></li>
+          <li class="_push">
+            <form class="cta-btn cta-btn--resume" method="GET">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Suchen" name="Search-Content">
+            </form>
+          </li>
+        </ul>
+    </nav>
+    <div class="mycontainer white zone">
+      
+              <div class="container-fluid" style="padding: 0px 30px;">
+                <div class="row bg-white has-shadow justify-content-center row-title">
+                    <div class="col-auto">
+                        <h2 class="sub-header" style="text-align: center;">Graph</h2>
+                      </div>
+                </div>
+                <div class="row bg-white justify-content-center has-shadow">
+                    {% if graph_content %}
+                      <div style="width:600;height:500">
+                      {{ graph_content|safe }}
+                      </div>
+                    {% endif %}
+                </div>
+              </div>
+
+    </div>
+    <div class="zone content grid-wrapper">
+      <!-- space for new stuff -->
+    </div>
+    <footer class="footer main main-navigation">
+      <a href="https://github.com/papstchaka" target="_blank" class="signature cta-btn cta-btn--resume-active _push">[2020] Alexander Christoph</a>
+    </footer>
+
+  </body>
+</html>

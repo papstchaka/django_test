@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{ dropzone.load_css() }}
+    {{ dropzone.style('background: none; height: 300px; width:100%;border-style: none;') }}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../static/img/favicon.ico">
+
+    <title>Tracealyser</title>
+
+    <!-- Bootstrap core CSS -->
+    
+    <!-- <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"> -->
+    <link href='static/vendor/fontawesome-free-5.11.2-web/css/all.css' rel="stylesheet">
+    <link href='static/vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css' rel="stylesheet">
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src='static/js/ie-emulation-modes-warning.js'></script> 
+    <link rel="stylesheet" href='satic/js/datatables/datatables.css' />
+   
+    <link rel="stylesheet" href='static/css/tracealyser.css' />
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <div class="modal fade bd-example-modal-lg" id="loading" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background-color: transparent !important;    border: 1px solid transparent !important; ">
+          <div class="modal-body" >
+              <div id="loader"></div>
+              <br>
+                <span style="text-align: center; width: 100%; color: white; font-size:30px;">Trace wird analysiert!</span> 
+            </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade bd-example-modal-xl" id="modal_searchtrace" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Select Trace</h5>
+          <button type="button" onclick="clear_tab('#datatable-searchtrace')" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div style="overflow-x:auto;">
+          <table class="table table-bordered table-hover table-striped mb-none" id="datatable-searchtrace">
+            <thead>
+              <tr>
+                <th>Prodnr</th>
+                <th>Tester</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Result</th>
+                <th>Filename</th>
+              </tr>
+            </thead>
+            <tbody id ="tbody_searchtrace">
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <body>
+
+      <head class="header">
+          <nav class="navbar fixed-top navbar-dark bg-dark">
+            <a  href="/" class="navbar-brand">Tracealyser</a>
+            <form class="form-inline">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Suchen">
+              <button class="btn btn-daimler-primary my-2 my-sm-0" type="submit">Suchen</button>
+            </form>
+          </nav>
+        </head>
+
+
+
+
+        <div class="page-content d-flex align-items-stretch">
+
+            <nav class="side-navbar fixed-left">
+                <span class="heading">Funktion</span>
+                <ul class="list-unstyled">
+                    <li class="active"><a href='index.html'> <i class="fas fa-cloud-upload-alt"></i>Trace upload </a></li>
+                    <li ><a href='stab.html'> <i class="fas fa-calculator"></i>Stabilitätsübersicht</a></li>
+                  </ul>
+                </nav>
+
+                <div class="content-inner">
+
+
+                    <section class="no-padding-bottom">
+                        <div class="container-fluid">
+                          <div class="row bg-white has-shadow justify-content-center row-title">
+                              <div class="col-auto">
+                                  <h2 class="sub-header">Select Trace for analysis</h2>
+                                </div>
+                          </div>            
+                          <div class="row align-items-center justify-content-center bg-white has-shadow row-content">
+                                <div class="col-xl-4 upload-item">
+                                    <div id="drop_zone" style="border: 2px dashed #808080; height: 200px; width:100%; border-radius: 25px;">
+                                        {{ dropzone.create(action='/') }}
+                                        {{ dropzone.load_js() }}
+                                        {{ dropzone.config() }}	
+                                  </div>
+                                  <h4>Upload Trace-File</h4>
+                                  <span class="text-muted">Select .zip-file for analysis</span>
+                                </div>
+
+                                <div class="col-xl-4 upload-item">
+                                    <div class="row align-items-center justify-content-center bg-white row-content">
+                                    <img src="static/img/fzg.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                                    </div>
+                                    <div class="row align-items-center justify-content-center bg-white row-content">
+                                    <input type="text" id="prodnrinput" value="" placeholder="Find Trace by Prod.-Nr."></input>
+                                    <button type="button" value="" class="btn-searchprodnr btn btn-daimler">search</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 upload-item">
+                                    <img src="static/img/qr.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                                    <h4>Scan QR-Code</h4>
+                                    <span class="text-muted">Scan QR-Code from vehicle</span>
+                                </div>
+                            
+                          </div>
+                        </div>
+                    </section>
+
+                    <section class="no-padding-bottom">
+                      
+                        <div class="container-fluid">
+                          <div class="row bg-white has-shadow justify-content-center row-title">
+                              <div class="col-auto">
+                                  <h2 class="sub-header">Available Traces</h2>
+                              </div>
+                          </div>            
+                          <div class="row bg-white has-shadow row-content">
+                            <div class="col-12">
+                              <div class="table-responsive">
+                                  <table class="table table-striped">
+                                      <thead>
+                                          <tr>
+                                            <th>Trace</th>
+                                            <th></th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                  
+                                            {%for x in files%} 
+                                            <tr>
+                                                <td class="align-middle">{{x}}</td>
+                                                <td class="float-right"><button type="button" value="{{x}}" class="btn-analyse btn btn-daimler">Trace analysieren</button></td>
+                                            </tr>
+                                            {%endfor%} 
+                  
+                  
+                                        </tbody>
+                  
+                                  </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+
+
+                </div>
+
+        </div>
+
+
+
+
+   
+
+
+ 
+   
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src='static/vendor/bootstrap-4.4.1-dist/js/bootstrap.min.js'></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src='static/js/vendor/holder.min.js'></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src='static/js/ie10-viewport-bug-workaround.js'></script>
+    <script src='static/js/tracealyser/page_index.js'></script>
+    <script src='static/js/datatables/dataTables.js'></script>
+  </body>
+</html>
