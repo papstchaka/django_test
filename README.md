@@ -7,7 +7,8 @@ Short Implementation that shows how django can be used as framework to host webi
 
 ## Requirements
 * django
---> install via `pip install django`
+* plotly (for the graphs section)
+--> install via `pip install django plotly`
 
 ## Fork project and set it up to work on local laptop
 * Fork/Clone the repository to your local machine into a folder like `django_test`, go to that folder and run `python manage.py runserver 2222`. 2222 is the projects default backend port. Of course you can change that if you want
@@ -20,6 +21,8 @@ App provides some different things that are already implemented:
 * a subsite that shows a <a href="https://plotly.com/python/" target="_blank">plotly generated Graph</a>
 * a subsite that shows given image and a <a href="https://dash.plotly.com/dash-html-components" target="_blank">dash_html_component</a> that was successfully transformed to HTML code, if possible.
 * Error-Site if desired subsite does not exist
+
+* Layout is almost similar to the `python`-version in my <a href="https://github.com/papstchaka/dash_test" target="_blank">dash_test</a> repo. Instead of using dash with python, this layout is implemented using HTML, CSS and JavaScript.
 
 --> for further information please visit `views.py` in `django_test`-folder. You can see there how to implement and view all those stuff.
 
