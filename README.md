@@ -1,5 +1,5 @@
 # django_test
-Short Implementation that shows how django can be used as framework to host webistes that a created with basic HTML + CSS.
+Short Implementation that shows how django can be used as framework to host webistes that are created with basic HTML + CSS.
 
 <h2 align="center">
   <img src=https://github.com/papstchaka/django_test/blob/master/django_test/static/assets/index.jpg alt="Home View" width="800px" />
