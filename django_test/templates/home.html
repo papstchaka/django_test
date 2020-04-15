@@ -1,0 +1,19 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light" style="width: 100%;">
+  <ul class="navbar-nav mr-auto" style="width: 100%; text-align: center; justify-content: center;"> 
+      <li class="nav-item">
+          <li role="presentation" class="dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Optionen<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+            </li>                      
+        <li style="text-align: center;">
+          {% for element in given_elements %}
+              <a class="nav-link dropdown-toggle-item" href="/{{ element }}">{{ element }}</a>
+          {% endfor %}
+        </li>
+      </ul>                
+    </ul>
+</nav>

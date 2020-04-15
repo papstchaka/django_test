@@ -5,7 +5,7 @@
   <head>
     
     <link rel="icon" href="{% static 'img/favicon.ico' %}">
-    <title>Home</title>
+    <title>{{title}}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/button.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -15,8 +15,8 @@
   <body>
     <nav class="zone hero sticky">
         <ul class="main-navigation">
-          <li><a href="/home" class="cta-btn cta-btn--resume-active">Startseite</a></li>
-          <li><a href='/subsite' class="cta-btn cta-btn--resume">Unterseite</a></li>
+          <li><a href="/home" class="cta-btn cta-btn--resume{{ btn.0 }}">Startseite</a></li>
+          <li><a href='/subsite' class="cta-btn cta-btn--resume{{ btn.1 }}">Unterseite</a></li>
           <li class="_push">
             <form class="cta-btn cta-btn--resume" method="GET">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Suchen" name="Search-Content">
@@ -26,23 +26,7 @@
     </nav>
     <div class="mycontainer white zone">
 
-        <nav class="navbar navbar-expand-lg navbar-light" style="width: 100%;">
-          <ul class="navbar-nav mr-auto" style="width: 100%; text-align: center; justify-content: center;"> 
-              <li class="nav-item">
-                  <li role="presentation" class="dropdown">
-                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        Optionen<span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                    </li>                      
-                <li style="text-align: center;">
-                  {% for element in given_elements %}
-                      <a class="nav-link dropdown-toggle-item" href="/{{ element }}">{{ element }}</a>
-                  {% endfor %}
-                </li>
-              </ul>                
-            </ul>
-        </nav>
+        {% include html_file %}
 
     </div>
     <div class="zone content grid-wrapper">
@@ -51,7 +35,7 @@
     <footer class="footer main main-navigation">
       <a href="https://github.com/papstchaka" target="_blank" class="signature cta-btn cta-btn--resume-active _push">[2020] Alexander Christoph</a>
     </footer>
-
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
